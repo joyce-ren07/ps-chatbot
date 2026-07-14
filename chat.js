@@ -216,6 +216,34 @@
     return bubble;
   }
 
+  function appendIsaacReply() {
+    const bubble = document.createElement("div");
+    bubble.className = "ps-msg ps-msg-assistant ps-msg-photo ps-msg-vipra";
+
+    const sun = document.createElement("img");
+    sun.src = "assets/isaac-sun.png";
+    sun.alt = "Isaac";
+    sun.loading = "eager";
+
+    const guitar = document.createElement("img");
+    guitar.src = "assets/isaac-guitar.png";
+    guitar.alt = "Isaac playing guitar";
+    guitar.loading = "eager";
+
+    const p = document.createElement("p");
+    p.textContent =
+      "OMG HEYYYY ISY FUNNY TO SEE YOU HERE, you should text joyce rn";
+
+    bubble.appendChild(sun);
+    bindImageScroll(sun);
+    bubble.appendChild(guitar);
+    bindImageScroll(guitar);
+    bubble.appendChild(p);
+    messagesEl.appendChild(bubble);
+    scrollToBottom();
+    return bubble;
+  }
+
   function isSethRequest(message) {
     return /\bseth\b/i.test(message);
   }
@@ -230,6 +258,10 @@
 
   function isCalebRequest(message) {
     return /\bcaleb\b/i.test(message);
+  }
+
+  function isIsaacRequest(message) {
+    return /\bisaac(?:\s+shang)?\b/i.test(message) || /\bisy\b/i.test(message);
   }
 
   function appendError(message) {
@@ -346,6 +378,13 @@
     // Easter egg: Caleb
     if (isCalebRequest(message)) {
       appendCalebReply();
+      input.focus();
+      return;
+    }
+
+    // Easter egg: Isaac Shang
+    if (isIsaacRequest(message)) {
+      appendIsaacReply();
       input.focus();
       return;
     }
