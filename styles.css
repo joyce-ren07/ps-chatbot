@@ -360,9 +360,15 @@ body {
 /* ——— Panel ——— */
 
 .ps-chat-panel {
+  --ps-chat-w: min(390px, calc(100vw - 2rem));
+  --ps-chat-h: min(560px, calc(100dvh - 7rem));
   position: relative;
-  width: min(390px, calc(100vw - 2rem));
-  height: min(560px, calc(100vh - 7rem));
+  width: var(--ps-chat-w);
+  height: var(--ps-chat-h);
+  max-width: calc(100vw - 1.5rem);
+  max-height: calc(100dvh - 6.5rem);
+  min-width: min(280px, calc(100vw - 1.5rem));
+  min-height: min(320px, calc(100dvh - 6.5rem));
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -376,6 +382,52 @@ body {
   -webkit-backdrop-filter: blur(30px) saturate(170%);
   transform-origin: bottom right;
   animation: panel-in 320ms var(--ease);
+}
+
+.ps-chat-panel.is-resizing {
+  animation: none;
+  transition: none;
+  user-select: none;
+}
+
+.ps-chat-resize {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: 28px 0 14px 0;
+  background: transparent;
+  cursor: nwse-resize;
+  touch-action: none;
+}
+
+.ps-chat-resize::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  width: 9px;
+  height: 9px;
+  border-top: 1.5px solid rgba(90, 80, 120, 0.35);
+  border-left: 1.5px solid rgba(90, 80, 120, 0.35);
+  border-radius: 2px 0 0 0;
+  opacity: 0.7;
+  transition: opacity 160ms ease;
+}
+
+.ps-chat-resize:hover::before,
+.ps-chat-resize:focus-visible::before {
+  opacity: 1;
+  border-color: rgba(90, 80, 120, 0.65);
+}
+
+.ps-chat-resize:focus-visible {
+  outline: 2px solid rgba(160, 130, 230, 0.7);
+  outline-offset: -2px;
 }
 
 .ps-chat-panel-wash {
@@ -646,19 +698,40 @@ body {
   outline-offset: 2px;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 640px) {
   .ps-chat {
     right: 0.75rem;
     bottom: 0.75rem;
+    left: 0.75rem;
+    align-items: stretch;
+  }
+
+  .ps-chat-toggle {
+    align-self: flex-end;
   }
 
   .ps-chat-panel {
-    width: calc(100vw - 1.5rem);
-    height: min(72vh, 540px);
+    --ps-chat-w: 100%;
+    --ps-chat-h: min(70dvh, 560px);
+    width: 100%;
+    max-width: none;
+    border-radius: 24px;
   }
 
   .hero-glass {
     padding: 2rem 1.25rem 1.5rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .ps-chat-panel {
+    --ps-chat-h: min(75dvh, calc(100dvh - 5.5rem));
+    border-radius: 22px;
+  }
+
+  .ps-chat-resize {
+    width: 28px;
+    height: 28px;
   }
 }
 
