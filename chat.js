@@ -142,6 +142,25 @@
     return bubble;
   }
 
+  function appendVipraReply() {
+    const bubble = document.createElement("div");
+    bubble.className = "ps-msg ps-msg-assistant ps-msg-photo ps-msg-vipra";
+
+    const img = document.createElement("img");
+    img.src = "assets/vipra.png";
+    img.alt = "Vipra";
+    img.loading = "eager";
+
+    const p = document.createElement("p");
+    p.textContent = "holy GOAT detected in our system";
+
+    bubble.appendChild(img);
+    bubble.appendChild(p);
+    messagesEl.appendChild(bubble);
+    scrollToBottom();
+    return bubble;
+  }
+
   function isSethRequest(message) {
     return /\bseth\b/i.test(message);
   }
@@ -249,7 +268,7 @@
 
     // Easter egg: Vipra
     if (isVipraRequest(message)) {
-      appendMessage("assistant", "holy GOAT detected in our system");
+      appendVipraReply();
       input.focus();
       return;
     }

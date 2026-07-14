@@ -522,7 +522,19 @@ body {
   width: 100%;
   height: auto;
   border-radius: 14px;
-  vertical-align: middle;
+}
+
+.ps-msg-vipra {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.45rem 0.45rem 0.7rem;
+}
+
+.ps-msg-vipra p {
+  margin: 0 0.2rem;
+  font-size: 0.88rem;
+  line-height: 1.4;
 }
 
 .ps-msg-user {
