@@ -180,6 +180,25 @@
     return bubble;
   }
 
+  function appendCalebReply() {
+    const bubble = document.createElement("div");
+    bubble.className = "ps-msg ps-msg-assistant ps-msg-photo ps-msg-vipra";
+
+    const img = document.createElement("img");
+    img.src = "assets/caleb.png";
+    img.alt = "Caleb";
+    img.loading = "eager";
+
+    const p = document.createElement("p");
+    p.textContent = "CLEB!! MONKE EAT BANANA!!!!";
+
+    bubble.appendChild(img);
+    bubble.appendChild(p);
+    messagesEl.appendChild(bubble);
+    scrollToBottom();
+    return bubble;
+  }
+
   function isSethRequest(message) {
     return /\bseth\b/i.test(message);
   }
@@ -190,6 +209,10 @@
 
   function isBennettRequest(message) {
     return /\bbennett\b/i.test(message);
+  }
+
+  function isCalebRequest(message) {
+    return /\bcaleb\b/i.test(message);
   }
 
   function appendError(message) {
@@ -299,6 +322,13 @@
     // Easter egg: Bennett
     if (isBennettRequest(message)) {
       appendBennettReply();
+      input.focus();
+      return;
+    }
+
+    // Easter egg: Caleb
+    if (isCalebRequest(message)) {
+      appendCalebReply();
       input.focus();
       return;
     }
