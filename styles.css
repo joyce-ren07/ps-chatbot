@@ -250,7 +250,16 @@ body {
   color: var(--ink);
 }
 
-.page-note,
+.page-note {
+  margin: 0.7rem 0 0;
+  font-family: var(--font);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  color: var(--ink-faint);
+}
+
 .page-title,
 .page-hint {
   display: none;
