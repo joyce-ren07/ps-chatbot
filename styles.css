@@ -100,18 +100,10 @@ body {
   padding: 2rem;
 }
 
-.hero-glass {
+.hero {
   width: min(420px, 100%);
   text-align: center;
-  padding: 2.5rem 1.75rem 2.1rem;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow:
-    0 24px 60px rgba(90, 70, 140, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(24px) saturate(150%);
-  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  padding: 1rem;
   animation: rise 700ms var(--ease) both;
 }
 
@@ -670,10 +662,6 @@ body {
     max-width: none;
     border-radius: 24px;
   }
-
-  .hero-glass {
-    padding: 2rem 1.25rem 1.5rem;
-  }
 }
 
 @media (max-width: 420px) {
@@ -694,7 +682,7 @@ body {
   .ps-chat-toggle-glow,
   .ps-chat-panel,
   .ps-msg,
-  .hero-glass {
+  .hero {
     animation: none !important;
   }
 }
