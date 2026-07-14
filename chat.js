@@ -152,7 +152,7 @@
     img.loading = "eager";
 
     const p = document.createElement("p");
-    p.textContent = "holy GOAT detected in our system";
+    p.textContent = "holy GOAT detected in our system *monkey clap hands for cookie*";
 
     bubble.appendChild(img);
     bubble.appendChild(p);
