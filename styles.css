@@ -664,6 +664,28 @@ body {
 }
 
 @media (max-width: 640px) {
+  .ambient {
+    background:
+      radial-gradient(720px 520px at 12% 8%, rgba(232, 94, 200, 0.1), transparent 58%),
+      /* Soft white wash into the top-right so the orb edge keeps contrast */
+      radial-gradient(520px 420px at 92% 0%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.72) 28%, transparent 62%),
+      radial-gradient(640px 480px at 88% 14%, rgba(155, 108, 255, 0.1), transparent 58%),
+      radial-gradient(720px 560px at 50% 96%, rgba(255, 77, 184, 0.07), transparent 55%),
+      linear-gradient(180deg, #ffffff 0%, #fefcff 52%, #faf8fc 100%);
+  }
+
+  .orb-b {
+    opacity: 0.28;
+    filter: blur(48px);
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.85) 0%,
+      rgba(255, 77, 184, 0.35) 42%,
+      rgba(155, 108, 255, 0.2) 70%,
+      transparent 78%
+    );
+  }
+
   .ps-chat {
     right: 0.75rem;
     bottom: 0.75rem;
