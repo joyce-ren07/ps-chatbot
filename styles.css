@@ -123,69 +123,86 @@ body {
 }
 
 .liquid-orb {
-  width: 190px;
-  height: 190px;
-  margin: 0.1rem auto 1.35rem;
+  --orb-size: 176px;
+  width: var(--orb-size);
+  height: var(--orb-size);
+  margin: 0.35rem auto 1.5rem;
   border-radius: 50%;
   position: relative;
   isolation: isolate;
-  background:
-    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.85) 0%, transparent 32%),
-    radial-gradient(
-      circle at 42% 38%,
-      #ffe4ef 0%,
-      #f0d4ff 28%,
-      #d8e9ff 58%,
-      #c8e8ff 78%,
-      transparent 100%
-    );
-  filter: blur(14px) saturate(1.05);
-  box-shadow: none;
+  display: grid;
+  place-items: center;
   animation: orb-breathe 7s ease-in-out infinite;
 }
 
-.liquid-orb::before {
-  content: "";
+.liquid-orb-bloom {
   position: absolute;
-  inset: 8%;
+  inset: -18%;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 40% 35%, rgba(255, 230, 240, 0.95) 0%, rgba(220, 200, 255, 0.55) 40%, rgba(180, 220, 255, 0.35) 70%, transparent 100%);
-  filter: blur(6px);
-  opacity: 0.95;
-  z-index: 1;
+  background: radial-gradient(
+    circle,
+    rgba(230, 210, 255, 0.55) 0%,
+    rgba(255, 200, 230, 0.28) 38%,
+    rgba(190, 220, 255, 0.18) 58%,
+    transparent 72%
+  );
+  filter: blur(22px);
+  z-index: 0;
+  pointer-events: none;
 }
 
-.liquid-orb::after {
-  content: "";
-  position: absolute;
-  inset: -12%;
+.liquid-orb-core {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   background:
-    radial-gradient(
-      circle,
-      transparent 42%,
-      rgba(255, 255, 255, 0.55) 58%,
-      rgba(255, 210, 235, 0.35) 68%,
-      rgba(200, 180, 255, 0.18) 78%,
-      transparent 88%
-    );
-  filter: blur(10px);
-  pointer-events: none;
+    radial-gradient(circle at 30% 26%, rgba(255, 255, 255, 0.95) 0%, transparent 28%),
+    radial-gradient(circle at 58% 62%, rgba(170, 200, 255, 0.65) 0%, transparent 42%),
+    radial-gradient(circle at 40% 44%, #ffe8f2 0%, #e8d6ff 34%, #c9d8ff 68%, #b8d8ff 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.35),
+    0 0 18px rgba(255, 255, 255, 0.75),
+    0 0 36px rgba(210, 180, 255, 0.45),
+    0 0 56px rgba(180, 210, 255, 0.28),
+    inset 0 0 24px rgba(255, 255, 255, 0.45),
+    inset 0 -18px 36px rgba(170, 190, 255, 0.25);
+  overflow: hidden;
+}
+
+.liquid-orb-sheen {
+  position: absolute;
   z-index: 2;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 54%, rgba(255, 255, 255, 0.55) 68%, rgba(255, 255, 255, 0.9) 74%, rgba(255, 220, 245, 0.35) 82%, transparent 90%);
   mix-blend-mode: screen;
+  opacity: 0.9;
   animation: rim-pulse 5.5s ease-in-out infinite;
+}
+
+.liquid-orb-grain {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 @keyframes rim-pulse {
   0%,
   100% {
-    opacity: 0.75;
-    transform: scale(1);
+    opacity: 0.78;
   }
   50% {
     opacity: 1;
-    transform: scale(1.03);
   }
 }
 
@@ -193,11 +210,9 @@ body {
   0%,
   100% {
     transform: scale(1);
-    opacity: 0.92;
   }
   50% {
-    transform: scale(1.04);
-    opacity: 1;
+    transform: scale(1.028);
   }
 }
 
@@ -391,16 +406,17 @@ body {
 }
 
 .ps-avatar-orb {
-  width: 38px;
-  height: 38px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background:
-    radial-gradient(circle at 35% 30%, #fff 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, var(--peach), var(--magenta) 45%, var(--lav) 100%);
-  filter: blur(3.5px);
+    radial-gradient(circle at 32% 28%, #fff 0%, transparent 36%),
+    radial-gradient(circle at 50% 50%, #ffe4ef 0%, #e0c8ff 45%, #b8d0ff 100%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   box-shadow:
-    0 0 10px rgba(255, 255, 255, 0.9),
-    0 0 18px rgba(255, 180, 220, 0.55);
+    0 0 10px rgba(255, 255, 255, 0.85),
+    0 0 16px rgba(200, 170, 255, 0.45),
+    inset 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
 .ps-chat-header-text h2 {
@@ -622,7 +638,7 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .orb,
   .liquid-orb,
-  .liquid-orb::after,
+  .liquid-orb-sheen,
   .ps-chat-toggle-glow,
   .ps-chat-panel,
   .ps-msg,
