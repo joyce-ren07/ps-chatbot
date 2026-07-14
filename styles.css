@@ -1,16 +1,18 @@
 :root {
-  --ink: #3a3a42;
-  --ink-soft: #6b6b76;
-  --glass: rgba(255, 255, 255, 0.55);
-  --glass-strong: rgba(255, 255, 255, 0.72);
-  --stroke: rgba(255, 255, 255, 0.65);
+  --ink: #4a4f5c;
+  --ink-soft: #7a8190;
+  --ink-faint: #9aa1ae;
+  --glass: rgba(255, 255, 255, 0.48);
+  --glass-strong: rgba(255, 255, 255, 0.7);
+  --stroke: rgba(255, 255, 255, 0.62);
   --stroke-soft: rgba(80, 70, 120, 0.08);
   --lav: #c9b6ff;
   --sky: #9fd4ff;
   --peach: #ffc8a8;
   --rose: #ffb4d6;
   --magenta: #e88ad8;
-  --font: "Manrope", sans-serif;
+  --font: "Plus Jakarta Sans", sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -97,14 +99,14 @@ body {
 }
 
 .hero-glass {
-  width: min(420px, 100%);
+  width: min(440px, 100%);
   text-align: center;
-  padding: 2.5rem 1.75rem 2rem;
+  padding: 2.75rem 1.85rem 2.25rem;
   border-radius: 32px;
   background: var(--glass);
   border: 1px solid var(--stroke);
   box-shadow:
-    0 30px 80px rgba(90, 70, 140, 0.12),
+    0 30px 80px rgba(90, 70, 140, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(28px) saturate(160%);
   -webkit-backdrop-filter: blur(28px) saturate(160%);
@@ -218,30 +220,63 @@ body {
 
 .page-brand {
   margin: 0;
-  font-size: clamp(1.75rem, 4vw, 2.15rem);
-  font-weight: 600;
-  letter-spacing: -0.03em;
+  font-family: var(--font);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
+  color: var(--ink);
+}
+
+.page-rule {
+  width: 1px;
+  height: 2.4rem;
+  margin: 1rem auto 1.15rem;
+  background: linear-gradient(
+    180deg,
+    rgba(122, 129, 144, 0.55),
+    rgba(122, 129, 144, 0.12)
+  );
+}
+
+.page-title {
+  margin: 0;
+  font-family: var(--font);
+  font-size: clamp(1.55rem, 4.2vw, 1.85rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+  color: #5c6472;
+}
+
+.page-emphasis {
+  margin: 0.85rem 0 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 3.4vw, 1.4rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
   color: var(--ink);
 }
 
 .page-note {
-  margin: 0.55rem 0 0;
+  margin: 1.15rem auto 0;
+  max-width: 30ch;
   color: var(--ink-soft);
-  font-size: 0.98rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
 }
 
 .page-hint {
-  margin: 1.35rem auto 0;
-  display: inline-block;
-  padding: 0.7rem 1.35rem;
-  border-radius: 999px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--ink);
-  background: linear-gradient(90deg, rgba(201, 182, 255, 0.55), rgba(255, 180, 214, 0.5));
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 8px 24px rgba(160, 120, 200, 0.15);
+  margin: 1.6rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: var(--ink-faint);
 }
 
 .visually-hidden {
@@ -421,17 +456,21 @@ body {
 
 .ps-chat-header-text h2 {
   margin: 0;
-  font-size: 0.98rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  text-transform: lowercase;
   color: var(--ink);
 }
 
 .ps-chat-header-text p {
-  margin: 0.15rem 0 0;
-  font-size: 0.74rem;
-  font-weight: 500;
+  margin: 0.12rem 0 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.82rem;
+  font-weight: 400;
   color: var(--ink-soft);
+  letter-spacing: -0.01em;
 }
 
 .ps-chat-messages {
@@ -450,9 +489,10 @@ body {
   max-width: 88%;
   padding: 0.75rem 0.95rem;
   border-radius: 18px;
-  font-size: 0.9rem;
-  line-height: 1.45;
-  font-weight: 500;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: -0.011em;
   animation: msg-in 240ms var(--ease);
 }
 
@@ -558,8 +598,9 @@ body {
   border-radius: 999px;
   padding: 0.78rem 1.05rem;
   font: inherit;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
   color: var(--ink);
   background: rgba(255, 255, 255, 0.65);
   outline: none;
