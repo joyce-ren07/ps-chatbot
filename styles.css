@@ -123,41 +123,81 @@ body {
 }
 
 .liquid-orb {
-  width: 168px;
-  height: 168px;
-  margin: 0.25rem auto 1.5rem;
+  width: 190px;
+  height: 190px;
+  margin: 0.1rem auto 1.35rem;
   border-radius: 50%;
   position: relative;
+  isolation: isolate;
   background:
-    radial-gradient(circle at 35% 30%, #fff8 0%, transparent 35%),
-    radial-gradient(circle at 50% 45%, var(--peach) 0%, var(--rose) 28%, var(--magenta) 48%, var(--lav) 68%, var(--sky) 100%);
-  filter: saturate(1.05);
-  box-shadow:
-    0 20px 50px rgba(200, 120, 180, 0.25),
-    inset 0 0 40px rgba(255, 255, 255, 0.25);
-  animation: orb-breathe 6s ease-in-out infinite;
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.85) 0%, transparent 32%),
+    radial-gradient(
+      circle at 42% 38%,
+      #ffe4ef 0%,
+      #f0d4ff 28%,
+      #d8e9ff 58%,
+      #c8e8ff 78%,
+      transparent 100%
+    );
+  filter: blur(14px) saturate(1.05);
+  box-shadow: none;
+  animation: orb-breathe 7s ease-in-out infinite;
+}
+
+.liquid-orb::before {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 40% 35%, rgba(255, 230, 240, 0.95) 0%, rgba(220, 200, 255, 0.55) 40%, rgba(180, 220, 255, 0.35) 70%, transparent 100%);
+  filter: blur(6px);
+  opacity: 0.95;
+  z-index: 1;
 }
 
 .liquid-orb::after {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -12%;
   border-radius: 50%;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
-  opacity: 0.22;
-  mix-blend-mode: soft-light;
+  background:
+    radial-gradient(
+      circle,
+      transparent 42%,
+      rgba(255, 255, 255, 0.55) 58%,
+      rgba(255, 210, 235, 0.35) 68%,
+      rgba(200, 180, 255, 0.18) 78%,
+      transparent 88%
+    );
+  filter: blur(10px);
   pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: screen;
+  animation: rim-pulse 5.5s ease-in-out infinite;
+}
+
+@keyframes rim-pulse {
+  0%,
+  100% {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
 }
 
 @keyframes orb-breathe {
   0%,
   100% {
     transform: scale(1);
-    filter: saturate(1.05) blur(0.2px);
+    opacity: 0.92;
   }
   50% {
-    transform: scale(1.03);
-    filter: saturate(1.12) blur(0.4px);
+    transform: scale(1.04);
+    opacity: 1;
   }
 }
 
@@ -351,13 +391,16 @@ body {
 }
 
 .ps-avatar-orb {
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background:
-    radial-gradient(circle at 35% 30%, #fff9 0%, transparent 40%),
+    radial-gradient(circle at 35% 30%, #fff 0%, transparent 40%),
     radial-gradient(circle at 50% 50%, var(--peach), var(--magenta) 45%, var(--lav) 100%);
-  filter: blur(0.2px);
+  filter: blur(3.5px);
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.9),
+    0 0 18px rgba(255, 180, 220, 0.55);
 }
 
 .ps-chat-header-text h2 {
@@ -579,6 +622,7 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .orb,
   .liquid-orb,
+  .liquid-orb::after,
   .ps-chat-toggle-glow,
   .ps-chat-panel,
   .ps-msg,
