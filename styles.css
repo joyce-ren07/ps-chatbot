@@ -1,17 +1,18 @@
 :root {
-  --ink: #4a4a58;
-  --ink-soft: #7a7a8c;
-  --ink-faint: #9a9aa8;
-  --glass: rgba(255, 255, 255, 0.62);
-  --glass-strong: rgba(255, 255, 255, 0.78);
-  --stroke: rgba(255, 255, 255, 0.72);
-  --stroke-soft: rgba(90, 70, 140, 0.08);
-  --lav: #b9a4ff;
-  --violet: #9b7cff;
-  --sky: #b8c8ff;
-  --mist: #efeaf8;
-  --magenta: #d18dff;
-  --hot: #c45cff;
+  --ink: #4a4458;
+  --ink-soft: #7a748c;
+  --ink-faint: #9a94a8;
+  --glass: rgba(255, 255, 255, 0.55);
+  --glass-strong: rgba(255, 255, 255, 0.72);
+  --stroke: rgba(255, 255, 255, 0.78);
+  --stroke-soft: rgba(140, 80, 160, 0.1);
+  --lav: #c9a8ff;
+  --lilac: #b48cff;
+  --violet: #9b6cff;
+  --magenta: #e85ec8;
+  --hot: #ff4db8;
+  --peach: #ffb4a0;
+  --mist: #f6f0f8;
   --font: "Plus Jakarta Sans", sans-serif;
   --font-serif: "Instrument Serif", Georgia, serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -29,7 +30,7 @@ body {
   min-height: 100%;
   font-family: var(--font);
   color: var(--ink);
-  background: #f3f1f7;
+  background: #f5f0f7;
   overflow-x: hidden;
 }
 
@@ -41,17 +42,17 @@ body {
   z-index: 0;
   overflow: hidden;
   background:
-    radial-gradient(900px 700px at 18% 12%, rgba(185, 164, 255, 0.38), transparent 60%),
-    radial-gradient(820px 620px at 88% 18%, rgba(196, 92, 255, 0.16), transparent 55%),
-    radial-gradient(900px 700px at 55% 92%, rgba(184, 200, 255, 0.32), transparent 55%),
-    linear-gradient(180deg, #f7f5fb 0%, #efeaf6 100%);
+    radial-gradient(920px 720px at 16% 10%, rgba(232, 94, 200, 0.22), transparent 58%),
+    radial-gradient(860px 640px at 88% 16%, rgba(155, 108, 255, 0.28), transparent 55%),
+    radial-gradient(900px 700px at 50% 95%, rgba(255, 77, 184, 0.16), transparent 55%),
+    linear-gradient(180deg, #faf5fb 0%, #f0e8f5 100%);
 }
 
 .orb {
   position: absolute;
   border-radius: 50%;
   filter: blur(40px);
-  opacity: 0.7;
+  opacity: 0.75;
   animation: drift 14s var(--ease) infinite alternate;
 }
 
@@ -60,7 +61,7 @@ body {
   height: 380px;
   left: -80px;
   top: 20%;
-  background: radial-gradient(circle, var(--lav) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--lilac) 0%, transparent 70%);
 }
 
 .orb-b {
@@ -68,7 +69,7 @@ body {
   height: 420px;
   right: -100px;
   top: -40px;
-  background: radial-gradient(circle, var(--hot) 0%, var(--magenta) 35%, transparent 70%);
+  background: radial-gradient(circle, var(--hot) 0%, var(--magenta) 40%, transparent 70%);
   animation-delay: -4s;
 }
 
@@ -77,7 +78,7 @@ body {
   height: 360px;
   right: 10%;
   bottom: -80px;
-  background: radial-gradient(circle, var(--sky) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--violet) 0%, transparent 70%);
   animation-delay: -7s;
 }
 
@@ -126,24 +127,41 @@ body {
 }
 
 .liquid-orb {
-  --orb-size: 196px;
+  --orb-size: 188px;
   width: var(--orb-size);
   height: var(--orb-size);
-  margin: 0.2rem auto 1.35rem;
+  margin: 0.25rem auto 1.4rem;
   position: relative;
+  border-radius: 50%;
   display: grid;
   place-items: center;
   animation: orb-breathe 7s ease-in-out infinite;
 }
 
-.liquid-orb-img {
-  width: 118%;
-  height: 118%;
-  object-fit: contain;
-  /* Shift the pink hotspot a bit toward purple/violet */
-  filter: hue-rotate(38deg) saturate(1.12) contrast(1.02);
+.liquid-orb-glow {
+  position: absolute;
+  inset: -8%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 28% 30%, rgba(255, 255, 255, 0.95) 0%, transparent 28%),
+    radial-gradient(circle at 32% 28%, #ff4db8 0%, transparent 34%),
+    radial-gradient(circle at 58% 42%, #e85ec8 0%, transparent 40%),
+    radial-gradient(circle at 68% 62%, #9b6cff 0%, transparent 46%),
+    radial-gradient(circle at 42% 58%, #c9a8ff 0%, #ffb4a0 55%, transparent 72%);
+  filter: blur(18px) saturate(1.15);
+  opacity: 0.98;
+}
+
+.liquid-orb-grain {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
   pointer-events: none;
-  user-select: none;
+  opacity: 0.28;
+  mix-blend-mode: soft-light;
+  -webkit-mask-image: radial-gradient(circle, #000 28%, transparent 72%);
+  mask-image: radial-gradient(circle, #000 28%, transparent 72%);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 @keyframes orb-breathe {
@@ -251,10 +269,12 @@ body {
 
 .ps-chat-toggle-glow {
   position: absolute;
-  inset: -30%;
+  inset: -35%;
   background:
-    center / cover no-repeat url("assets/orb.png");
-  filter: hue-rotate(38deg) saturate(1.15) blur(4px);
+    radial-gradient(circle at 30% 28%, #ff4db8 0%, transparent 40%),
+    radial-gradient(circle at 65% 60%, #9b6cff 0%, transparent 48%),
+    radial-gradient(circle at 45% 50%, #e85ec8 0%, #c9a8ff 50%, transparent 70%);
+  filter: blur(10px) saturate(1.2);
   opacity: 0.95;
   animation: orb-breathe 5s ease-in-out infinite;
   z-index: 0;
@@ -371,9 +391,9 @@ body {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(280px 180px at 15% 0%, rgba(185, 164, 255, 0.32), transparent 70%),
-    radial-gradient(240px 160px at 95% 8%, rgba(196, 92, 255, 0.16), transparent 65%),
-    radial-gradient(260px 200px at 80% 100%, rgba(184, 200, 255, 0.22), transparent 70%);
+    radial-gradient(280px 180px at 12% 0%, rgba(232, 94, 200, 0.22), transparent 70%),
+    radial-gradient(240px 160px at 95% 8%, rgba(155, 108, 255, 0.24), transparent 65%),
+    radial-gradient(260px 200px at 80% 100%, rgba(255, 77, 184, 0.14), transparent 70%);
   z-index: 0;
 }
 
@@ -415,10 +435,14 @@ body {
 }
 
 .ps-avatar-orb {
-  width: 150%;
-  height: 150%;
-  object-fit: cover;
-  filter: hue-rotate(38deg) saturate(1.12);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 28%, #ff4db8 0%, transparent 40%),
+    radial-gradient(circle at 65% 60%, #9b6cff 0%, transparent 50%),
+    radial-gradient(circle at 45% 50%, #e85ec8, #c9a8ff 70%);
+  filter: blur(2.5px) saturate(1.15);
 }
 
 .ps-chat-header-text h2 {
@@ -494,9 +518,9 @@ body {
 .ps-msg-user {
   align-self: flex-end;
   color: var(--ink);
-  background: linear-gradient(135deg, rgba(185, 164, 255, 0.5), rgba(209, 141, 255, 0.38));
+  background: linear-gradient(135deg, rgba(232, 94, 200, 0.35), rgba(155, 108, 255, 0.4));
   border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 8px 24px rgba(140, 100, 200, 0.12);
+  box-shadow: 0 8px 24px rgba(160, 80, 180, 0.12);
   border-bottom-right-radius: 8px;
 }
 
@@ -582,9 +606,9 @@ body {
 }
 
 .ps-chat-form input:focus {
-  border-color: rgba(185, 164, 255, 0.9);
+  border-color: rgba(232, 94, 200, 0.7);
   box-shadow:
-    0 0 0 3px rgba(185, 164, 255, 0.28),
+    0 0 0 3px rgba(155, 108, 255, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
@@ -597,13 +621,13 @@ body {
   height: 44px;
   border: 1px solid rgba(255, 255, 255, 0.75);
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(185, 164, 255, 0.85), rgba(196, 92, 255, 0.55));
+  background: linear-gradient(135deg, rgba(255, 77, 184, 0.7), rgba(155, 108, 255, 0.75));
   color: var(--ink);
   cursor: pointer;
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  box-shadow: 0 8px 20px rgba(140, 100, 200, 0.22);
+  box-shadow: 0 8px 20px rgba(160, 80, 180, 0.22);
   transition: transform 160ms var(--ease), filter 160ms ease;
 }
 
