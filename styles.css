@@ -228,7 +228,7 @@ body {
   border-radius: 50%;
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.18));
-  color: rgba(74, 68, 88, 0.92);
+  color: #ffffff;
   cursor: pointer;
   backdrop-filter: blur(22px) saturate(180%);
   -webkit-backdrop-filter: blur(22px) saturate(180%);
@@ -630,7 +630,7 @@ body {
   border-radius: 50%;
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.55), rgba(255, 77, 184, 0.35) 45%, rgba(155, 108, 255, 0.5));
-  color: var(--ink);
+  color: #ffffff;
   cursor: pointer;
   display: grid;
   place-items: center;
