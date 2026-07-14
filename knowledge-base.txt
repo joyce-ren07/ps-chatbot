@@ -15,13 +15,28 @@ in industry. Core values: Community, Empathy, Growth.
 
 THE FELLOWSHIP PROGRAM
 ------------------------
-The fellowship is a two-quarter mentorship program:
+The fellowship is a two-quarter mentorship program with three verticals —
+Product Design, Product Marketing, and Product Management.
+
 - WINTER QUARTER: Fellows complete weekly workshops hosted by experienced
-  board members, covering three verticals — Product Design, Product
-  Marketing, and Product Management.
-- SPRING QUARTER: Fellows apply what they learned in a Capstone Project,
-  showcasing their experience with the interactions between product
-  marketing, management, and design.
+  board members in the vertical they are in. You are taught the curriculum
+  for your own vertical (not all three). That said, there is a lot of room
+  for overlap and exploration between verticals, and it's definitely possible
+  to pick up skills and insights from Design, Marketing, and Management
+  even while specializing.
+- SPRING QUARTER: Fellows apply what they learned in a Capstone Project.
+  Collaborating cross-vertically with peers in spring is especially helpful —
+  you work directly with people from other verticals in a cross-functional
+  team, which is a great way to learn how product marketing, management,
+  and design interact.
+
+VERTICALS / CURRICULUM FAQ
+----------------------------
+Q: Do fellows learn all three verticals in winter?
+A: No. In winter you are taught the curriculum for the vertical you join.
+   There is still room for overlap and exploration across verticals, and
+   spring Capstone work with cross-functional peers helps you pick up
+   skills and insights from all three.
 
 OTHER WAYS TO GET INVOLVED
 ----------------------------
