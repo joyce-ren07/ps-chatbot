@@ -57,7 +57,8 @@
 
   function applySize(width, height) {
     const size = clampSize(width, height);
-    panel.style.setProperty("--ps-chat-w", `${size.width}px`);
+    const mobile = window.matchMedia("(max-width: 640px)").matches;
+    panel.style.setProperty("--ps-chat-w", mobile ? "100%" : `${size.width}px`);
     panel.style.setProperty("--ps-chat-h", `${size.height}px`);
     return size;
   }
@@ -115,7 +116,19 @@
   }
 
   function scrollToBottom() {
-    messagesEl.scrollTop = messagesEl.scrollHeight;
+    requestAnimationFrame(() => {
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    });
+  }
+
+  function bindImageScroll(img) {
+    const onReady = () => scrollToBottom();
+    if (img.complete) {
+      onReady();
+    } else {
+      img.addEventListener("load", onReady, { once: true });
+      img.addEventListener("error", onReady, { once: true });
+    }
   }
 
   function appendMessage(role, content) {
@@ -137,6 +150,7 @@
     img.alt = "Seth";
     img.loading = "eager";
     bubble.appendChild(img);
+    bindImageScroll(img);
     messagesEl.appendChild(bubble);
     scrollToBottom();
     return bubble;
@@ -155,6 +169,7 @@
     p.textContent = "holy GOAT detected in our system *monkey clap hands for cookie*";
 
     bubble.appendChild(img);
+    bindImageScroll(img);
     bubble.appendChild(p);
     messagesEl.appendChild(bubble);
     scrollToBottom();
@@ -174,6 +189,7 @@
     p.textContent = "GWOWZA, BENNETT!! *in talking ben voice*";
 
     bubble.appendChild(img);
+    bindImageScroll(img);
     bubble.appendChild(p);
     messagesEl.appendChild(bubble);
     scrollToBottom();
@@ -193,6 +209,7 @@
     p.textContent = "CLEB!! MONKE EAT BANANA!!!!";
 
     bubble.appendChild(img);
+    bindImageScroll(img);
     bubble.appendChild(p);
     messagesEl.appendChild(bubble);
     scrollToBottom();
