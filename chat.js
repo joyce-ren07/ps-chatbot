@@ -161,12 +161,35 @@
     return bubble;
   }
 
+  function appendBennettReply() {
+    const bubble = document.createElement("div");
+    bubble.className = "ps-msg ps-msg-assistant ps-msg-photo ps-msg-vipra";
+
+    const img = document.createElement("img");
+    img.src = "assets/bennett.png";
+    img.alt = "Bennett";
+    img.loading = "eager";
+
+    const p = document.createElement("p");
+    p.textContent = "GWOWZA, BENNETT!! *in talking ben voice*";
+
+    bubble.appendChild(img);
+    bubble.appendChild(p);
+    messagesEl.appendChild(bubble);
+    scrollToBottom();
+    return bubble;
+  }
+
   function isSethRequest(message) {
     return /\bseth\b/i.test(message);
   }
 
   function isVipraRequest(message) {
     return /\bvipra\b/i.test(message);
+  }
+
+  function isBennettRequest(message) {
+    return /\bbennett\b/i.test(message);
   }
 
   function appendError(message) {
@@ -269,6 +292,13 @@
     // Easter egg: Vipra
     if (isVipraRequest(message)) {
       appendVipraReply();
+      input.focus();
+      return;
+    }
+
+    // Easter egg: Bennett
+    if (isBennettRequest(message)) {
+      appendBennettReply();
       input.focus();
       return;
     }
