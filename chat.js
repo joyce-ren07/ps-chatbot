@@ -146,6 +146,10 @@
     return /\bseth\b/i.test(message);
   }
 
+  function isVipraRequest(message) {
+    return /\bvipra\b/i.test(message);
+  }
+
   function appendError(message) {
     const bubble = document.createElement("div");
     bubble.className = "ps-msg ps-msg-error";
@@ -239,6 +243,13 @@
     // Easter egg: reply with Seth's photo only
     if (isSethRequest(message)) {
       appendSethPhoto();
+      input.focus();
+      return;
+    }
+
+    // Easter egg: Vipra
+    if (isVipraRequest(message)) {
+      appendMessage("assistant", "holy GOAT detected in our system");
       input.focus();
       return;
     }
