@@ -511,6 +511,20 @@ body {
   border-bottom-left-radius: 8px;
 }
 
+.ps-msg-photo {
+  padding: 0.35rem;
+  max-width: min(240px, 72%);
+  overflow: hidden;
+}
+
+.ps-msg-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  vertical-align: middle;
+}
+
 .ps-msg-user {
   align-self: flex-end;
   color: var(--ink);

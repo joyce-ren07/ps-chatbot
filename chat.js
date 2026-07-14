@@ -129,6 +129,23 @@
     return bubble;
   }
 
+  function appendSethPhoto() {
+    const bubble = document.createElement("div");
+    bubble.className = "ps-msg ps-msg-assistant ps-msg-photo";
+    const img = document.createElement("img");
+    img.src = "assets/seth.png";
+    img.alt = "Seth";
+    img.loading = "eager";
+    bubble.appendChild(img);
+    messagesEl.appendChild(bubble);
+    scrollToBottom();
+    return bubble;
+  }
+
+  function isSethRequest(message) {
+    return /\bseth\b/i.test(message);
+  }
+
   function appendError(message) {
     const bubble = document.createElement("div");
     bubble.className = "ps-msg ps-msg-error";
@@ -217,8 +234,16 @@
     if (!message) return;
 
     appendMessage("user", message);
-    history.push({ role: "user", content: message });
     input.value = "";
+
+    // Easter egg: reply with Seth's photo only
+    if (isSethRequest(message)) {
+      appendSethPhoto();
+      input.focus();
+      return;
+    }
+
+    history.push({ role: "user", content: message });
     setBusy(true);
     showTyping();
 
