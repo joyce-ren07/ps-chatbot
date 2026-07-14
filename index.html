@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Space | UC San Diego</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page">
+    <p class="page-brand">Product Space</p>
+    <p class="page-note">UC San Diego &mdash; chat with the assistant (bottom right)</p>
+  </main>
+
+  <div id="ps-chat" class="ps-chat" aria-live="polite">
+    <button
+      type="button"
+      id="ps-chat-toggle"
+      class="ps-chat-toggle"
+      aria-label="Open Product Space Assistant"
+      aria-expanded="false"
+      aria-controls="ps-chat-panel"
+    >
+      <svg class="icon-chat" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2zm2 4v2h12V8H6zm0 4v2h8v-2H6z"/>
+      </svg>
+      <svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M18.3 5.7a1 1 0 0 0-1.4 0L12 10.6 7.1 5.7a1 1 0 0 0-1.4 1.4L10.6 12l-4.9 4.9a1 1 0 1 0 1.4 1.4L12 13.4l4.9 4.9a1 1 0 0 0 1.4-1.4L13.4 12l4.9-4.9a1 1 0 0 0 0-1.4z"/>
+      </svg>
+    </button>
+
+    <section
+      id="ps-chat-panel"
+      class="ps-chat-panel"
+      role="dialog"
+      aria-label="Product Space Assistant"
+      hidden
+    >
+      <header class="ps-chat-header">
+        <div class="ps-chat-header-text">
+          <h2>Product Space Assistant</h2>
+          <p>Ask about events, teams &amp; getting involved</p>
+        </div>
+      </header>
+
+      <div id="ps-chat-messages" class="ps-chat-messages" role="log" aria-relevant="additions">
+        <div class="ps-msg ps-msg-assistant">
+          <p>Hi! I&rsquo;m the Product Space Assistant. Ask me anything about the club at UC San Diego.</p>
+        </div>
+      </div>
+
+      <form id="ps-chat-form" class="ps-chat-form" autocomplete="off">
+        <label class="visually-hidden" for="ps-chat-input">Message</label>
+        <input
+          id="ps-chat-input"
+          type="text"
+          name="message"
+          placeholder="Type your question…"
+          maxlength="2000"
+          required
+        />
+        <button type="submit" class="ps-chat-send" aria-label="Send message">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M3.4 20.6 21 12 3.4 3.4l.1 6.7L15 12 3.5 13.9l-.1 6.7z"/>
+          </svg>
+        </button>
+      </form>
+    </section>
+  </div>
+
+  <script src="chat.js" defer></script>
+</body>
+</html>
