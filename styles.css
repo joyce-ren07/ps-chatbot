@@ -42,9 +42,9 @@ body {
   z-index: 0;
   overflow: hidden;
   background:
-    radial-gradient(920px 720px at 16% 10%, rgba(232, 94, 200, 0.18), transparent 58%),
-    radial-gradient(860px 640px at 88% 16%, rgba(155, 108, 255, 0.22), transparent 55%),
-    radial-gradient(900px 700px at 50% 95%, rgba(255, 77, 184, 0.12), transparent 55%),
+    radial-gradient(920px 720px at 16% 10%, rgba(232, 94, 200, 0.12), transparent 58%),
+    radial-gradient(860px 640px at 88% 16%, rgba(155, 108, 255, 0.15), transparent 55%),
+    radial-gradient(900px 700px at 50% 95%, rgba(255, 77, 184, 0.08), transparent 55%),
     linear-gradient(180deg, #ffffff 0%, #fdfcff 55%, #faf8fc 100%);
 }
 
@@ -52,7 +52,7 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(40px);
-  opacity: 0.75;
+  opacity: 0.55;
   animation: drift 14s var(--ease) infinite alternate;
 }
 
