@@ -10,6 +10,27 @@
   /** @type {{ role: "user" | "assistant", content: string }[]} */
   const history = [];
 
+  /** Strip markdown/emojis so the chat bubble shows clean plain text. */
+  function toPlainText(text) {
+    return String(text)
+      .replace(/```[\s\S]*?```/g, (block) =>
+        block.replace(/```\w*\n?/g, "").replace(/```/g, "")
+      )
+      .replace(/`([^`]+)`/g, "$1")
+      .replace(/\*\*([^*]+)\*\*/g, "$1")
+      .replace(/__([^_]+)__/g, "$1")
+      .replace(/\*([^*]+)\*/g, "$1")
+      .replace(/_([^_]+)_/g, "$1")
+      .replace(/^#{1,6}\s+/gm, "")
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1 ($2)")
+      .replace(/^\s*[-*+]\s+/gm, "• ")
+      .replace(/\p{Extended_Pictographic}/gu, "")
+      .replace(/[\uFE0F\u200D]/g, "")
+      .replace(/[ \t]+\n/g, "\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }
+
   function setOpen(open) {
     root.classList.toggle("is-open", open);
     panel.hidden = !open;
@@ -99,7 +120,7 @@
         throw new Error(data.error || "Something went wrong. Please try again.");
       }
 
-      const reply = (data.reply || "").trim();
+      const reply = toPlainText(data.reply || "");
       if (!reply) {
         throw new Error("Empty response from assistant.");
       }
