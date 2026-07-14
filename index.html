@@ -6,13 +6,23 @@
   <title>Product Space | UC San Diego</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="ambient" aria-hidden="true">
+    <span class="orb orb-a"></span>
+    <span class="orb orb-b"></span>
+    <span class="orb orb-c"></span>
+  </div>
+
   <main class="page">
-    <p class="page-brand">Product Space</p>
-    <p class="page-note">UC San Diego &mdash; chat with the assistant (bottom right)</p>
+    <div class="hero-glass">
+      <div class="liquid-orb" aria-hidden="true"></div>
+      <p class="page-brand">Product Space</p>
+      <p class="page-note">UC San Diego &mdash; ask the assistant anything</p>
+      <p class="page-hint">Tap the bubble in the corner to chat</p>
+    </div>
   </main>
 
   <div id="ps-chat" class="ps-chat" aria-live="polite">
@@ -24,6 +34,7 @@
       aria-expanded="false"
       aria-controls="ps-chat-panel"
     >
+      <span class="ps-chat-toggle-glow" aria-hidden="true"></span>
       <svg class="icon-chat" viewBox="0 0 24 24" aria-hidden="true">
         <path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2zm2 4v2h12V8H6zm0 4v2h8v-2H6z"/>
       </svg>
@@ -39,10 +50,15 @@
       aria-label="Product Space Assistant"
       hidden
     >
+      <div class="ps-chat-panel-wash" aria-hidden="true"></div>
+
       <header class="ps-chat-header">
+        <div class="ps-avatar" aria-hidden="true">
+          <span class="ps-avatar-orb"></span>
+        </div>
         <div class="ps-chat-header-text">
           <h2>Product Space Assistant</h2>
-          <p>Ask about events, teams &amp; getting involved</p>
+          <p>Here to help you get involved</p>
         </div>
       </header>
 
@@ -58,7 +74,7 @@
           id="ps-chat-input"
           type="text"
           name="message"
-          placeholder="Type your question…"
+          placeholder="Ask anything…"
           maxlength="2000"
           required
         />
